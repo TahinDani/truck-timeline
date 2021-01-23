@@ -15,6 +15,7 @@ function App() {
   const [filter, setFilter] = useState('')
 
   useEffect(() => {
+    // need to convert the data format for the Chart
     const timelineData = []
     trucksData.trucks.forEach((truck) => {
       if (truck.name.toLowerCase().includes(filter.toLowerCase())) {
@@ -50,6 +51,8 @@ function App() {
             options={{
               timeline: {
                 colorByRowLabel: true,
+                rowLabelStyle: {fontName: 'Poppins'},
+                barLabelStyle: {fontName: 'Poppins'},
               },
             }}
             rootProps={{ 'data-testid': '7' }}
