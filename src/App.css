@@ -1,0 +1,15 @@
+.Chart {
+    width: max(100%, 884px);
+    height: 100vh;
+    overflow-x: auto;
+}
+
+.Chart-container {
+    overflow-x: auto;
+}
+
+.App .no-result {
+    text-align: center;
+    margin: 40px;
+    font-size: 1.1rem;
+}

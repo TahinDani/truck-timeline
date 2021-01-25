@@ -1,0 +1,67 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 25px;
+    background-image: url("https://uploads-ssl.webflow.com/5e6b80841d494c476318dda1/5e85fec90a3ad0394b26e825_hero.jpg");
+    background-size: cover;
+    background-position: center;
+} 
+
+.Header .logo {
+    color: var(--main-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+}
+
+.Header .truck-filter {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.Header .truck-filter input {
+    padding: 8px;
+    border: none;
+    border-radius: unset;
+    margin-left: 10px;
+}
+
+.Header .truck-filter input:focus {
+    border-radius: unset;
+    outline: none;
+    box-shadow: 0 0 2px 1px #ffffff;
+}
+
+.Header input::placeholder {
+    opacity: 0;
+}
+
+@media screen and (max-width: 560px) {
+    .Header {
+        display: block;
+    }
+
+    .Header .truck-filter {
+        margin-top: 15px;
+    }
+
+}
+
+@media screen and (max-width: 365px) {
+    .Header .truck-filter .filter-label {
+        display: none;
+    }
+
+    .Header .truck-filter input {
+        margin: 0;
+    }
+
+    .Header input::placeholder {
+        opacity: 1;
+        font-family: 'Poppins';
+    }
+}

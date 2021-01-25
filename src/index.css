@@ -9,6 +9,10 @@
 	src: local('Poppins'), url(./fonts/Poppins-Bold.ttf) format('truetype');
 }
 
+:root {
+	--main-green: #4fb8a2;
+}
+
 body {
 	font-family: 'Poppins', 'sans-serif';
 }

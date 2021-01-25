@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Chart } from 'react-google-charts'
 import trucksData from './trucktimeline.json';
+import Header from './components/Header/Header'
 import './App.css'
 
 const timelineColumns = [
@@ -38,25 +39,25 @@ function App() {
 
   return (
     <div className="App">
-      <div className="truck-filter">
-        Search truck: <input type="text" onChange={(e) => onFilterChange(e)} />
-      </div>
+      <Header onFilterChange={onFilterChange} />
       {orders.length > 0
-        ? <Chart
-            width={'100%'}
-            height={'100vh'}
-            chartType="Timeline"
-            loader={<div>Loading Chart</div>}
-            data={[timelineColumns, ...orders]}
-            options={{
-              timeline: {
-                colorByRowLabel: true,
-                rowLabelStyle: {fontName: 'Poppins'},
-                barLabelStyle: {fontName: 'Poppins'},
-              },
-            }}
-            rootProps={{ 'data-testid': '7' }}
-          />
+        ?
+        <div className="Chart-container">
+          <Chart
+              className='Chart'
+              chartType="Timeline"
+              loader={<div>Loading Chart</div>}
+              data={[timelineColumns, ...orders]}
+              options={{
+                timeline: {
+                  colorByRowLabel: true,
+                  rowLabelStyle: {fontName: 'Poppins', fontSize: '16'},
+                  barLabelStyle: {fontName: 'Poppins'},
+                },
+              }}
+              rootProps={{ 'data-testid': '7' }}
+            />
+          </div> 
         : <div className="no-result">There aren't any results with this filter</div>
       }
       
