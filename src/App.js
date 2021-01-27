@@ -13,13 +13,12 @@ const timelineColumns = [
 
 function App() {
   const [orders, setOrders] = useState([])
-  const [filter, setFilter] = useState('')
+  const [filteredOrders, setFilteredOrders] = useState([])
 
   useEffect(() => {
     // need to convert the data format for the Chart
     const timelineData = []
     trucksData.trucks.forEach((truck) => {
-      if (truck.name.toLowerCase().includes(filter.toLowerCase())) {
         truck.assignedOrderId.forEach((id) => {
           timelineData.push([
             truck.name,
@@ -28,26 +27,27 @@ function App() {
             new Date(trucksData.orders.find((order) => order.id === id).to)
           ])
         })
-      }
     })
     setOrders(timelineData)
-  }, [filter])
+    setFilteredOrders(timelineData)
+  }, [])
 
   const onFilterChange = (e) => {
-    setFilter(e.target.value)
+    const filterInput = e.target.value
+    setFilteredOrders(orders.filter((order) => order[0].toLowerCase().includes(filterInput.toLowerCase())))
   }
 
   return (
     <div className="App">
       <Header onFilterChange={onFilterChange} />
-      {orders.length > 0
+      {filteredOrders.length > 0
         ?
         <div className="Chart-container">
           <Chart
               className='Chart'
               chartType="Timeline"
               loader={<div>Loading Chart</div>}
-              data={[timelineColumns, ...orders]}
+              data={[timelineColumns, ...filteredOrders]}
               options={{
                 timeline: {
                   colorByRowLabel: true,
